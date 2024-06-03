@@ -1,3 +1,52 @@
-
-
-<router-outlet />
+<div class="container">
+  <form [formGroup]="userForm" >
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" id="email" class="form-control" formControlName="email" aria-describedby="emailHelp" required>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="mobile" class="form-label">Phone</label>
+      <input type="number" id="mobile" class="form-control" formControlName="mobile" required>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="number" id="amount" class="form-control" formControlName="amount" required>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addItem()">Submit</button>
+  </form>
+  
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listdata">
+          <th scope="row">{{ item.name }}</th>
+          <td>{{ item.email }}</td>
+          <td>{{ item.mobile }}</td>
+          <td>{{ item.amount }}</td>
+          <td><button class="btn btn-danger" (click)="deleteItem(item)">Delete</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total</td>
+          <td>{{ total }}</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

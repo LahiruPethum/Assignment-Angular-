@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required]],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{9}$')]],
       amount: ['', [Validators.required, Validators.min(1)]]
     });
   }
